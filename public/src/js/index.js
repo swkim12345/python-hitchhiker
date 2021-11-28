@@ -1,13 +1,13 @@
-"use strict";
-
-const $ = (selector) => document.querySelector(selector);
+'use strict';
 
 const sitename = $('#sitename');
 const signup = $('#signup-submit');
 const signin = $('#signin-submit');
 const signout = $('#signout');
-
 const firstPage = 'index.html';
+
+let signupmodal = new bootstrap.Modal(document.getElementById("modal-signup"));
+let signinmodal = new bootstrap.Modal(document.getElementById("staticBackdrop2"));
 
 sitename.addEventListener('click', function (e) {
   e.preventDefault();
@@ -29,9 +29,12 @@ signup.addEventListener('click', async (e) => {
 	})
   if (response.status === 200) {
     console.log("회원가입 성공");
+    signupmodal.hide();
+    signUpSnackbar();
   }
   else {
     console.log("회원가입 실패");
+    signupmodal.show();
   }
 });
 
@@ -46,7 +49,7 @@ signin.addEventListener('click', function (e) {
       password: $('#signin-password').value,
     }),
 	})
-  .then((response) => { 
+  .then((response) => {
     console.log(response);
     return(response.json());
   } )
@@ -55,11 +58,16 @@ signin.addEventListener('click', function (e) {
     sessionStorage.setItem("email", json.email);
     sessionStorage.setItem("id", json.id);
     sessionStorage.setItem("progress", json.progress);
+	  sessionStorage.setItem("page", json.progress);
     $('#profile').style.display= "block";
     $('#signup').style.display= "none";
     $('#signin').style.display= "none";
+    signinmodal.hide();
+    location.reload();
   })
   .catch((error) => {
+    signinmodal.show();
+    signInSnackbar();
     console.log(error);
   })
 });
@@ -79,5 +87,7 @@ signout.addEventListener('click', async(e) => {
     $('#profile').style.display= "none";
     $('#signup').style.display= "block";
     $('#signin').style.display= "block";
+    sessionStorage.setItem("page", 0);
+    location.reload();
   })
 });

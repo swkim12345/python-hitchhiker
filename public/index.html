@@ -5,27 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>The Hitchhiker's Guide to Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="src/codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="src/codemirror/theme/xq-light.css">
     <link rel="stylesheet" href="src/css/index.css" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/css/sunghwki.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="src/codemirror/lib/codemirror.js "></script>
-    <script src="src/codemirror/addon/comment/comment.js"></script>
-    <script src="src/codemirror/addon/selection/active-line.js"></script>
-    <script src="src/codemirror/keymap/sublime.js"></script>
-    <script src="src/codemirror/mode/python/python.js"></script>
-    <script src="src/codemirror/addon/fold/foldcode.js"></script>
-    <script src="src/codemirror/addon/fold/foldgutter.js"></script>
-    <script src="src/codemirror/addon/fold/brace-fold.js"></script>
-    <script src="src/codemirror/addon/fold/indent-fold.js"></script>
-    <script src="src/codemirror/addon/fold/comment-fold.js"></script>
-    <script src="src/codemirror/addon/edit/closebrackets.js"></script>
-    <script src="src/codemirror/addon/edit/matchbrackets.js"></script>
     <script src="src/js/study.js"></script>
+    <script src="src/js/popup.js"></script>
     <script>
      const SERVER = "http://localhost:3000"
+     const $ = (selector) => document.querySelector(selector);
     </script>
     <link rel="apple-touch-icon" sizes="57x57" href="src/img/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="src/img/apple-icon-60x60.png">
@@ -40,7 +32,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="src/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="src/img/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="src/img/favicon-16x16.png">
-    <link rel="shortcut icon" sizes="114x115" href="src/img/apple-icon-114x114.png">
+    <link rel="shortcut icon" sizes="114x114" href="src/img/apple-icon-114x114.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="src/img/apple-icon-114x114.png">
     <link rel="manifest" href="src/img/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -50,18 +42,20 @@
 
   <body>
     <main>
-      <header class="py-2 mb-2 mt-2">
+      <header class="ps-3 pb-2 pt-2 hover">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-10" id="sitename">
+            <div class="col-12 col-sm-8 col-md-7 col-lg-5 col-xl-6 col-xxl-4" id="sitename">
               <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <span class="fs-2 font-lobster">The Hitchhiker's Guide to Python</span>
+                <span class="fs-2 font-lobster" style="color:#d0d0d0;">The Hitchhiker's Guide to Python</span>
               </a>
+            </div>
+            <div class="col-md-1 col-lg-3 col-xl-3 col-xxl-6">
             </div>
 
             <!-- Sign up -->
-            <div class="col-md-1">
-              <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#modal-signup" id="signup" style="display: block">Sign up</button>
+            <div class="col float-end pt-2">
+              <button type="button" class="btn btn-secondary float-end button-color-hovering fw-bold" data-bs-toggle="modal" data-bs-target="#modal-signup" id="signup" style="display: none ">Sign Up</button>
               <div class="modal fade" id="modal-signup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -82,14 +76,8 @@
                         <input type="text" class="form-control rounded-4" id="signup-username" placeholder="Password">
                         <label for="signup-password">Full name</label>
                       </div>
-                      <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" id="signup-submit" data-bs-dismiss="modal">Sign up</button>
+                      <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" id="signup-submit">Sign up</button>
                       <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
-                      <hr class="my-4">
-                      <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-                      <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-4" type="submit">
-                        <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"/></svg>
-                        Sign up with GitHub
-                      </button>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -100,11 +88,11 @@
             </div>
 
             <!-- Sign in -->
-            <div class="col-md-1 float-end">
-              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" id="signin" style="display: block">Sign in</button>
+            <div class="col pt-2">
+              <button type="button" class="btn btn-secondary button-color-hovering fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" id="signin" style="display: none">Sign In</button>
                 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
+                  <div class="modal-dialog" id="modal-signin">
+                    <div class="modal-content" >
                       <div class="modal-header">
                         <h5 class="modal-title fs-5 fw-bold" id="staticBackdropLabel2">Sign in</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -118,13 +106,7 @@
                           <input type="password" class="form-control rounded-4" id="signin-password" placeholder="Password">
                           <label for="signin-password">Password</label>
                         </div>
-                        <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" id="signin-submit" data-bs-dismiss="modal">Sign in</button>
-                        <hr class="my-4">
-                        <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
-                        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-4">
-                          <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"/></svg>
-                          Sign in with GitHub
-                        </button>
+                        <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" id="signin-submit">Sign in</button>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -135,8 +117,8 @@
             </div>
 
             <!-- Profile -->
-            <div class="dropdown text-end" id="profile" style="display: none">
-              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="col dropdown text-end" id="profile" style="display: none">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle float-end" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
@@ -147,8 +129,9 @@
         </div>
       </header>
     </main>
-    <div class="px-4">
-      <div class="row align-items-md-stretch">
+
+    <div class="px-4 py-4" style="background-color: #595959;">
+      <div class="row">
         <div class="col-md-6">
           <div class="p-4 bg-light border rounded-3 scrollable-menu" id="content" style="min-height: 35rem;">
             <script>
@@ -156,43 +139,174 @@
             </script>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 ">
           <div class="forincode border">
             <form action="">
               <textarea id="editor" class="editor"></textarea>
             </form>
           </div>
-          <div class="h-100 p-4 bg-light border rounded-3 outscroll">
-            <p>this is for output</p>
+          <div id="dl_result" class="mh-100 p-4 bg-light border rounded-3 outscroll" style="height: 10rem;">
           </div>
         </div>
       </div>
-      <div class="row align-items-md-center p-4">
-        <div class="col-md-1">
-          <a class="leftBtn" href="#">
-            <i class="material-icons">arrow_circle_left</i>
-          </a>
-          <a class="rightBtn" href="#">
-            <i class="material-icons">arrow_circle_right</i>
-          </a>
+
+      <div class="row align-items-center py-4">
+        <div class="col-12 col-sm-12 col-md-1 justify-content-start btn-group">
+          <button type="button" class="btn btn-secondary" onclick="leftBtnClick()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"></path>
+            </svg>
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="rightBtnClick()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-rig ht-fill" viewBox="0 0 16 16">
+            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"></path>
+            </svg>
+          </button>
         </div>
-        <div class="col-md-10">
-          <label for="customRange3" class="form-label">Example range</label>
-          <input type="range" class="form-range" min="0" max="29" step="1" id="customRange3" onchange="updateTextInput(this.value);">
-          <input type="text" id="textInput" value="">
+        <div class="col-12 col-sm-12 col-md-10 justify-content-end ps-5">
+          <input type="range" value="" class="form-range" min="0" max="29" step="1" id="page" onchange="barMovement(this.value);">
+          <script>setPage(sessionStorage.getItem('page'))</script>
         </div>
-        <div class="col-md-1 order-last text-end">
-          <button id="test" class="btn btn-primary">submit</button>
+        <div class="col-12 col-sm-12 col-md-1 order-last text-end">
+          <button id="runCode" class="btn btn-primary">submit</button>
         </div>
       </div>
     </div>
+    <div id="signinfail">로그인 실패</div>
+    <div id="signupsuccess">회원 가입을 축하드립니다!</div>
 
     <!-- FOOTER -->
-    <footer class="container">
-      <p class="float-end"><a href="#">Back to top</a></p>
-      <p>&copy; 2021 오픈소스 해커톤 팀 6 &middot; TEAM PYTHON_HITCHHIKER &middot; <a href="https://github.com/python-hitchhiker" class="github-href">GITHUB</a></p>
+    <footer style="background-color: #f7f7f7;">
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-2 center">
+            <img src="src/img/42seoul.png" height="31" style="filter:invert(100%);">
+            <p  style="margin: 15px;"></p>
+            <span>2021 INNOHACK<br></span>
+            <span style="font-size : x-small">산학협력오픈소스SW해커톤<br></span>
+            <span style="font-size : x-small">| 주최 &middot; 주관 | 이노베이션 아카데미</span>
+          </div>
+          <div class="col-12 col-md-3 center">
+            <h4>&nbsp;<svg aria-hidden="true" height="37" viewBox="0 0 18 18" version="1.1" data-view-component="true" class="octicon octicon-law mr-2"><path fill-rule="evenodd" d="M8.75.75a.75.75 0 00-1.5 0V2h-.984c-.305 0-.604.08-.869.23l-1.288.737A.25.25 0 013.984 3H1.75a.75.75 0 000 1.5h.428L.066 9.192a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.514 3.514 0 00.686.45A4.492 4.492 0 003 11c.88 0 1.556-.22 2.023-.454a3.515 3.515 0 00.686-.45l.045-.04.016-.015.006-.006.002-.002.001-.002L5.25 9.5l.53.53a.75.75 0 00.154-.838L3.822 4.5h.162c.305 0 .604-.08.869-.23l1.289-.737a.25.25 0 01.124-.033h.984V13h-2.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-2.5V3.5h.984a.25.25 0 01.124.033l1.29.736c.264.152.563.231.868.231h.162l-2.112 4.692a.75.75 0 00.154.838l.53-.53-.53.53v.001l.002.002.002.002.006.006.016.015.045.04a3.517 3.517 0 00.686.45A4.492 4.492 0 0013 11c.88 0 1.556-.22 2.023-.454a3.512 3.512 0 00.686-.45l.045-.04.01-.01.006-.005.006-.006.002-.002.001-.002-.529-.531.53.53a.75.75 0 00.154-.838L13.823 4.5h.427a.75.75 0 000-1.5h-2.234a.25.25 0 01-.124-.033l-1.29-.736A1.75 1.75 0 009.735 2H8.75V.75zM1.695 9.227c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327l-1.305 2.9zm10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327l-1.305 2.9z"></path></svg>&nbsp;&nbsp;License</h4>
+            <p>GPL v3.0 or later</p>
+          </div>
+          <div class="col-12 col-md-3 center">
+            <h4><svg height="37" viewBox="0 0 18 18" class="octicon octicon-mark-github v-align-middle fill-gray mx-1" aria-label="GitHub"  version="1.1" role="img"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg> OPEN SOURCE</h4>
+            <p><a href="https://github.com/innohack2021/python-hitchhiker" class="github-href">TEAM GITHUB</a></p>
+          </div>
+          <div class="col-12 col-md-4 container center">
+            <div class="row">
+              <h4>Contributors</h4>
+              <div class="col-md-6">
+                <p style="font-size: small;"><svg height="15" class="octicon octicon-mark-github v-align-middle fill-gray mx-1" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><a href="https://github.com/S0YKIM" class="github-href"> sokim</a></p>
+                <p style="font-size: small;"><svg height="15" class="octicon octicon-mark-github v-align-middle fill-gray mx-1" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><a href="https://github.com/ft-jasong" class="github-href"> jasong</a></p>
+                <p style="font-size: small;"><svg height="15" class="octicon octicon-mark-github v-align-middle fill-gray mx-1" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><a href="https://github.com/swkim12345" class="github-href"> sunghwki</a></p>
+              </div>
+              <div class="col-md-6">
+                <p style="font-size: small;"><svg height="15" class="octicon octicon-mark-github v-align-middle fill-gray mx-1" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><a href="https://github.com/jujinesy" class="github-href"> jubae</a></p>
+                <p style="font-size: small;"><svg height="15" class="octicon octicon-mark-github v-align-middle fill-gray mx-1" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><a href="https://github.com/Yaminyam" class="github-href"> sikang</a></p>
+                <p style="font-size: small;"><svg height="15" class="octicon octicon-mark-github v-align-middle fill-gray mx-1" aria-label="GitHub" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg><a href="https://github.com/toy-k" class="github-href"> jeonghwl</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
+    <!-- get code from server -->
+    <script type="module">
+      // Can be changed according to your directory path.
+      import "./src/js/backend.ai-client-es6.js";
+      window.addEventListener("load", login.bind(this));
+      document.querySelector("#runCode").addEventListener("click", execute.bind(this));
+      let client;
+      console.log(typeof client);
 
+      export async function login() {
+          // Create a client configuration object.
+          let config = new ai.backend.ClientConfig(
+              "AKIAIOSFODNN7EXAMPLE",
+              "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+              "http://pythonhitchhiker.42seoul.kr:8091"
+          );
+          // Create a client object with configuration object.
+          client = new ai.backend.Client(
+              config,
+              "Backend.AI ES6 App.",
+          );
+          client.ready = false;
+          client.get_manager_version().then((response) => {
+              client.ready = true;
+              return Promise.resolve(true);
+          }).catch((e) =>{
+              console.log(`Login failed: ${e.message}`);
+              return Promise.resolve(false);
+          });
+      }
+
+      export function errorAsString(e) {
+          let result = '';
+          for (let key in e) {
+              if (e.hasOwnProperty(key)) {
+              result = result + " " + key + "," + e[key] + "|";
+              }
+          }
+          return result;
+      }
+
+      export async function execute() {
+          try {
+              if (typeof client === "undefined") {
+                  await login();
+              }
+              let code = document.querySelector(".CodeMirror").CodeMirror.getValue();
+              let resources = {"cpu": 1, 
+                  "mem": "1g",
+                  "mounts": [],
+                  "env": {},
+                  "resource_opts": {},
+                  "group_name": "default",
+                  "scaling_group": "default",
+                  "maxWaitSeconds": 30};
+              await client.createIfNotExists("cr.backend.ai/stable/python:3.8-ubuntu18.04", "test", resources);
+
+              let run_id = Math.floor(Math.random() * 50000).toString();
+              let query = await client.execute("test", run_id, "query", code, {});
+              while (query.result.status != 'finished') {
+                  query = await client.execute("test", run_id, "query", ``, {});
+              }
+              let response = query;
+              if (response.result.exitCode === 0) {
+                  document.querySelector("#dl_result").innerHTML = response.result.console[0][1];
+                  return response.result.console[0][1];
+              } else {
+                  let result = errorAsString(response.result);
+                  return result;
+              }
+          } catch (err) {
+              switch (err.type) {
+                  case client.ERR_SERVER:
+                      console.log(`Session creation failed: ${err.message}`);
+                  default:
+                      console.log(`request/response failed: ${err.message}`);
+              }
+          };
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="src/codemirror/lib/codemirror.js "></script>
+    <script src="src/codemirror/addon/comment/comment.js"></script>
+    <script src="src/codemirror/addon/selection/active-line.js"></script>
+    <script src="src/codemirror/keymap/sublime.js"></script>
+    <script src="src/codemirror/mode/python/python.js"></script>
+    <script src="src/codemirror/addon/fold/foldcode.js"></script>
+    <script src="src/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="src/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="src/codemirror/addon/fold/indent-fold.js"></script>
+    <script src="src/codemirror/addon/fold/comment-fold.js"></script>
+    <script src="src/codemirror/addon/edit/closebrackets.js"></script>
+    <script src="src/codemirror/addon/edit/matchbrackets.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script defer src="src/js/index.js"></script>

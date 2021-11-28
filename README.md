@@ -1,78 +1,126 @@
-# 개발 문서
+# 🚀 PYTHON HITCHHIKER
 
-### ■ 프로젝트명
+Learn python easily: Python practice website (web/app) for end-users and developers.
 
-- The Hitchhiker's Guide to Python
-- Backend.ai API 를 활용한 Python 코드 실습 사이트
+</br>
 
-### ■ 팀명
+## 📌 Role
 
-- Python Hitchhiker
+#### Python-hichhiker focuses to...
 
-### ■ 팀원 구성
-
-| 인트라 아이디 | Name | Tags | 담당 개발 | email | github ID |
-| --- | --- | --- | --- | --- | --- |
-| sokim | 김소연 | 프론트엔드, 오거나이저 | mock-up / 로그인 | 42.4.sokim@gmail.com | SOYKIM |
-| jasong | 송재룡 | 프론트엔드, 리드 | mock-up / 예제코드 뷰 | jasong@sutdent.42seoul.kr | ft-jasong |
-| sunghwki | 김성환 | python 예제 | 프론트엔드 / python 예제 개발 | python 예제 30개 정리 | sunghwki@studet.42seoul.kr | swkim12345 |
-| jeonghwl | 이정환 | 백엔드 / 리드 | squelize을 사용한 세선 관리 | jeonghwanlee15@gamil.com | toy-k |
-| sikang | 강시온 | 백엔드 / 풀스택 | express.js + SQLite + passport.js 기반 백엔드 개발 | siontama@gmail.com | siontama@gmail.com |
-| jubae | 배주진 | 백엔드 | 백엔드 개선, 프론트엔드 기능 추가| jubae@student.42seoul.kr | jujinesy@gmail.com |
-
-### ■ 아이템 개요
-
-- 웹 상에서 돌아가는 python 교육 프로그램
-
-### ■ 개발 계획 및 목표
-
-- 사용자에게 온라인상에서 쉽게 코드를 따라 치면서 최종 목표인 ()를 만드는 것
-- 프론트엔드 / 백엔드 / python 예제 로 역할을 분담함.
-
-### ■ 용어 정리
-
-| 원래 용어 | 여기서 사용하는 용어 |
-| --- | --- |
-| template | 템플릿 |
-| parsing | 파싱 |
-| front-end | 프론트엔드 |
-| back-end | 백엔드 |
-| framework | 프레임워크 |
+ * Serve as desktop app (windows, macOS and Linux) and web service.
+ * Provide a boilerplate to manage user information based on Express.
+ * Help developers to build a coding practice website.
+ * Make learning programming languages easy for everyone.
+ * Display the result of a code on your browser without any software tools.
 
 
-### ■ 구체적인 개발 방법
+#### User Features
+ * Free membership
+    * Sign up
+    * Sign in
+    * Sign out
 
-- 프론트엔드, 백엔드, Python 예제 정리로 나눠 개발
-    - 프론트엔드
-        - bootstrap 템플릿을 활용한 웹 페이지 개발
-        - Material UI 를 사용한 디자인
+ * Education
+    * Python code examples
+    * Display the result of your python code
+    * Progress bar to check how much you have learned
 
-            [Material Design for Bootstrap 5 & 4](https://mdbootstrap.com/)
 
-        - 회원가입, 로그인, 로그아웃 기능
-        - 로그인 후 자신의 진도를 확인할 수 있음.
-        - plain md을 파싱해 설명, 코드를 양 쪽에 표시함
-        - codemirror을 사용해 코드를 화면에 표시하고, backend.AI를 사용해 python 코드를 웹상에서 작동하고, 결과를 웹에서 볼 수 있음.
-        - 추가로 codemirror을 사용해 사용자가 원하는 코드를 타이핑할 수 있음.
+#### Management Features
+ * User management
+    * User creation
+    * User deletion
+    * Key management
 
-    - 백엔드
-        - node.js 기반 express.js 프레임워크를 사용하고, sqlite를 데이터베이스로 사용함.
-        - 설명, 코드를 plain md으로 프론트엔드단으로 보냄
-        - Rest API 형식으로 프론트 엔드, 백엔드 간 통신을 함.
-        - javascript를 통해 sqlite 데이터베이스에 파싱을 하여 유저 정보 관리
-        - 자신의 진도를 sqlite에 user 정보와 같이 관리하며 진도에 맞는 md 파일을 선택해 프론트엔드로 보내줌.
+ * Work with Web server
+    * Delegate login to web server
+    * Support userid / password login
 
-    - python 예제 정리
-        - 최종 목표인 ()을 만들기 위해 6개의 중간 단계를 만듦
-            - 소개
-            - 제어 구문
-            - 자료형
-            - 함수, 클래스
-            - 라이브러리
-            - 알고리즘
-            - ()
-        - 한 수업당 여러 예제를 들고, 유기적으로 연결된 학습 예제를 통해 사용자가 쉽게 Python에 대한 이해를 할 수 있음
 
-### ■ 기대 효과 및 전망
+## 💡 Setup Guide
 
-- 타겟팅하는 20, 30대 유저층에게 Python으로 하는 코딩의 즐거움을 환경 설정 없이 웹 상에서 쉽게 알려줄 수 있음
+
+
+#### Python-hitchhiker Web UI is built with
+ * `npm` as package manager
+
+
+
+#### ✅ Initializing & excuting python-hitchhiker
+
+```shell
+$ npm install
+$ npm audit fix #It can occur errors, but don't worry. The command below will solve it!
+$ npm run start
+```
+
+
+#### ✅ Initializing backend.AI
+
+ * Install on your PC: [Quick start guidelines](https://docs.backend.ai/en/latest/install/guides.html)
+
+ * Run on cloud: [Cloud backend.ai](https://cloud.backend.ai/)
+
+
+#### ✅ Initializing codemirror 
+
+ * Set on your code : [codemirror CDN](https://cdnjs.com/libraries/codemirror)
+
+#### Branches
+
+ * main : Development branch
+ * release : Latest release branch  
+ 
+#### Developing and testing without bundling
+
+```
+$ npm run dev
+```
+
+
+## 🖌 Modifing examples and Adding new examples
+
+1. Go to ```public/content``` folder.
+2. There are two folders. which are ```description``` and ```python_problem```.
+3. ```description``` means an explanation for problem, and ```python_problem``` is a problem set.
+4. You can modify from 000.md to 029.md.
+5. If you want to add new examples, you can add markdown files such as ```030.md```.
+6. After adding new examples, you must modify the progress bar ```max``` value into ```public/index.html```.
+
+
+
+##  ✨ Code of conduct
+
+View [Code of conduct](https://github.com/innohack2021/python-hitchhiker/blob/main/CODE_OF_CONDUCT.md) for community guidelines.
+
+
+## 🧾 License
+
+Refer to [LICENSE file](https://github.com/innohack2021/python-hitchhiker/blob/main/LICENSE.md).
+
+
+
+## 🤩 Contributors!
+
+Thanks goes to these wonderful people :
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/S0YKIM"><img src="https://user-images.githubusercontent.com/88143547/143767506-c9a64153-a0de-4e6d-a959-490d5fc58283.jpeg" width="100px;" alt=""/><br /><sub><b>Soyeon Kim</b></sub></a><br /><a href="https://github.com/S0YKIM" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/swkim12345"><img src="https://user-images.githubusercontent.com/88143547/143767525-8e369e86-375b-498a-af2d-e52501601092.png" width="100px;" alt=""/><br /><sub><b>Sunghwan Kim</b></sub></a><br /><a href="https://github.com/swkim12345" title="Code">💻</a></td>
+     <td align="center"><a href="https://github.com/jujinesy"><img src="https://user-images.githubusercontent.com/88143547/143767412-2948af4a-2b45-43b0-abad-a2d4d23b8521.png" width="100px;" alt=""/><br /><sub><b>Jujin Bae</b></sub></a><br /><a href="https://github.com/jujinesy" title="Code">💻</a></td>
+     <td align="center"><a href="https://github.com/Yaminyam"><img src="https://user-images.githubusercontent.com/88143547/143767571-9173b376-ba4b-4dfb-8528-2f6048593620.png" width="100px;" alt=""/><br /><sub><b>Sion Kang</b></sub></a><br /><a href="https://github.com/Yaminyam" title="Code">💻</a></td>
+     <td align="center"><a href="https://github.com/ft-jasong"><img src="https://user-images.githubusercontent.com/88143547/143767547-13dd1ac2-76a1-4c96-831d-5427268e4cdc.png" width="100px;" alt=""/><br /><sub><b>Jaeryong Song</b></sub></a><br /><a href="https://github.com/ft-jasong" title="Code">💻</a></td>
+     <td align="center"><a href="https://github.com/toy-k"><img src="https://user-images.githubusercontent.com/88143547/143767557-e2b80fb9-8eb1-4597-b6c2-72edb1fbcd5d.png" width="100px;" alt=""/><br /><sub><b>Jeonghwan Lee</b></sub></a><br /><a href="https://github.com/toy-k" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
