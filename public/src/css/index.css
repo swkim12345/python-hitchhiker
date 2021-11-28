@@ -1,14 +1,19 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .font-lobster
 {
 	font-family: 'Lobster', cursive;
 }
 
-.font-nanum-gothic
+.font-gsans
 {
-    font-family: 'Nanum Gothic', sans-serif !important;
+    font-family: 'GmarketSansMedium', sans-serif;
 }
-
 
 .github-href
 {
@@ -20,10 +25,12 @@
     text-align: center;
 }
 
-header {
+.bk-clr{
     background-color: #595959;
-    transition: background-color .5s;
+}
 
+header {
+    transition: background-color .5s;
 }
 
 header:hover{
@@ -35,16 +42,16 @@ header:hover span
     color: #202020 !important;
 }
 
-button.button-color-hovering{
+button.btr-clr{
     background-color: #595959;
     border: 0;
     color:#d0d0d0;
 }
 
-div.bottom-bar {
-    position: relative;
-    bottom: 0px;
-    margin: auto;
+button:hover {
+    background-color: white !important;
+    color: #202020 !important;
+    transition: color background-color .5s;
 }
 
 div.scrollable-menu {
