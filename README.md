@@ -4,6 +4,11 @@ Build your website easily: python live coding cookbook software using Backend.AI
 
 </br>
 
+<img width="100%" src="https://user-images.githubusercontent.com/72473178/144203773-cfeef370-37cb-4f23-9dcb-e5d5710f116c.gif"/>
+
+
+</br>
+
 ## 📌 Role
 
 #### Python-hichhiker focuses to...
@@ -45,6 +50,8 @@ Build your website easily: python live coding cookbook software using Backend.AI
 #### Python-hitchhiker Web UI is built with
  * `npm` as package manager
 
+#### If you don't have a remote server yet...
+ * Change the value of the variable `SERVER` into `http://localhost:3000`
 
 
 #### ✅ Initializing & excuting python-hitchhiker
@@ -102,9 +109,9 @@ Refer to [LICENSE file](https://github.com/innohack2021/python-hitchhiker/blob/m
 
 
 
-## 🤩 Contributors!
+## 🤩 Contributors
 
-Thanks goes to these wonderful people :
+Thanks go to these wonderful people :
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
